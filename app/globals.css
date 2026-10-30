@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #172a27;
+}
+
+@theme inline {
+  --color-forest: #123f37;
+  --color-forest-deep: #0b302b;
+  --color-sage: #e5efe4;
+  --color-sage-light: #f1f5ef;
+  --color-ivory: #fafaf7;
+  --color-ink: #172a27;
+  --color-muted: #68746f;
+  --color-quiet: #3e524c;
+  --color-line: #e5eae5;
+  --color-gold: #c99d65;
+  --color-mist: #d7e6dc;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background: #123f37;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #123f37;
+  outline-offset: 3px;
+}
+
+.on-dark :focus-visible {
+  outline-color: #ffffff;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 80;
+  transform: translateY(-180%);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #123f37;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #3e524c;
+}
+
+.display {
+  font-size: clamp(2.35rem, 5.4vw, 5.05rem);
+  line-height: 0.98;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.55rem);
+  line-height: 1.05;
+}
+
+.media-frame img {
+  transition: transform 700ms ease;
+}
+
+.group:hover .media-frame img,
+.group:focus-within .media-frame img {
+  transform: scale(1.045);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.8s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .group:hover .media-frame img,
+  .group:focus-within .media-frame img {
+    transform: none;
+  }
+}
